@@ -1,0 +1,65 @@
+/* src/App.css */
+.App {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(250, 252, 248, 255);
+  overflow: hidden;
+  transition: background-color 1s ease;
+}
+
+.App.lights-off {
+  background-color: black;
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition: color 1s ease;
+}
+
+.App.lights-off .center-text {
+  color: black;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: black;
+  padding: 10px;
+  background: rgba(250, 252, 248, 0.8);
+  transition: color 1s ease, background 1s ease;
+}
+
+.App.lights-off .footer {
+  color: black;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.new-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+}
+
+.new-text {
+  color: white;
+}
+
+.new-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}

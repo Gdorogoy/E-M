@@ -1,0 +1,6 @@
+/* src/GifComponent.css */
+.gif {
+  position: absolute;
+  width: 75px; /* Adjust the size as needed */
+  height: 85px; /* Adjust the size as needed */
+}
