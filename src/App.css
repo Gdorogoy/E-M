@@ -1,4 +1,4 @@
-/* src/App.css */
+/* General styles */
 .App {
   position: relative;
   width: 100vw;
@@ -10,41 +10,59 @@
 
 .App.lights-off {
   background-color: black;
+  overflow: auto; /* Enable scrolling in dark mode */
+}
+
+.content-container {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Use the full height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 20px;
 }
 
 .center-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 24px;
   font-weight: bold;
   color: black;
   cursor: pointer;
   transition: color 1s ease;
+  text-align: center;
+  margin: 0 10px; /* Add margin to avoid text touching screen edges */
+  z-index: 10; /* Ensure this text is on top of GIFs */
+  position: relative;
 }
 
 .App.lights-off .center-text {
-  color: black;
+  color: white;
 }
 
+
 .footer {
-  position: absolute;
-  bottom: 0;
+  position: absolute; 
+  bottom: -95%;
   width: 100%;
+  height: 100%;
   text-align: center;
   color: black;
   padding: 10px;
   background: rgba(250, 252, 248, 0.8);
   transition: color 1s ease, background 1s ease;
+  
 }
 
 .App.lights-off .footer {
   color: black;
   background: rgba(0, 0, 0, 0.8);
+
 }
 
 .new-content {
+  margin-top: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,14 +70,76 @@
   height: 100vh;
   color: white;
   text-align: center;
+  padding: 20px;
 }
 
 .new-text {
   color: white;
+  margin: 10px 0;
+  font-size: 18px; /* Adjust font size for better readability */
 }
 
 .new-image {
   max-width: 100%;
   height: auto;
   margin: 20px 0;
+}
+
+/* Positioning GIFs */
+.gif {
+  position: absolute;
+  width: 10%;
+  height: auto;
+  z-index: 1; /* Ensure GIFs are below the text */
+}
+
+.gif.bottom {
+  bottom: 10%; /* Position some GIFs towards the bottom */
+}
+
+.gif.middle {
+  top: 50%; /* Position some GIFs towards the middle */
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+  .content-container {
+    transform: scale(0.8); /* Scale down the content */
+    transform-origin: top left; /* Ensure scaling starts from the top left corner */
+  }
+
+  .center-text {
+    font-size: 20px;
+  }
+
+  .footer {
+    padding: 8px;
+    bottom: -115%;
+    left:7%
+
+  }
+
+  .new-text {
+    font-size: 16px;
+  }
+
+  .new-content {
+    padding: 10px;
+  }
+
+  .new-image {
+    max-width: 90%;
+  }
+
+  .gif {
+    width: 30px; 
+    height: 25px;/* Smaller GIFs for mobile */
+  }
+
+
+ 
+
+
+
+  
 }
