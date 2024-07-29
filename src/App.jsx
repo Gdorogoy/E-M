@@ -58,6 +58,34 @@ const App = () => {
   const [lightsOff, setLightsOff] = useState(false);
   const [showNewContent, setShowNewContent] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+
+  const phrases = [
+  "I Love You",        // English
+  "Je t'aime",         // French
+  "Te amo",            // Spanish
+  "Ich liebe dich",    // German
+  "Ti amo",            // Italian
+  "Eu te amo",         // Portuguese
+  "愛してる",            // Japanese
+  "사랑해",             // Korean
+  "Я люблю тебя",      // Russian
+  "אני אוהב אותך",
+  "我爱你",             // Chinese (Simplified)
+  "أنا أحبك",         // Arabic
+  "Ik hou van jou",    // Dutch
+  "Kocham cię",        // Polish
+  "Σ' αγαπώ",         // Greek
+  "Te iubesc",         // Romanian
+  "Jeg elsker deg",    // Norwegian
+  "Jag älskar dig",    // Swedish
+  "Jeg elsker dig",    // Danish
+  "ฉันรักคุณ",          // Thai
+  "Te quiero",         // Filipino (Tagalog)
+];
+
+
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -66,6 +94,13 @@ const App = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+    }, 1700); // Change text every second
+    return () => clearInterval(interval);
+  }, [phrases.length]);
 
   const handleToggleLightsOff = () => {
     setLightsOff(true);
@@ -85,7 +120,7 @@ const App = () => {
       <div className="content-container">
         {!showNewContent ? (
           <>
-            <h1 className="center-text" onClick={handleToggleLightsOff}>I Love You</h1>
+            <h1 className="center-text" onClick={handleToggleLightsOff}>{phrases[phraseIndex]}</h1>
             {components}
             <footer className='footer' >E+M 07/03/2024-∞</footer>
           </>
